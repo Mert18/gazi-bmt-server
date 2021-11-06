@@ -6,6 +6,7 @@
   "repository": "git@github.com:Mert18/gazi-bmt-server.git",
   "author": "Mert18 <mertuygur02@gmail.com>",
   "scripts": {
+    "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "license": "MIT",
