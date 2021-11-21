@@ -12,12 +12,10 @@ export const getMessages = async (_, res) => {
 export const createMessage = async (req, res) => {
   const { body, method } = req;
 
-  // Extract the email and captcha code from the request body
   const { title, email, message, captcha } = body;
 
   if (method === "POST") {
-    // If email or captcha are missing return an error
-    if (!email || !captcha || !title || !message) {
+    if (!email || !captcha) {
       return res.status(422).json({
         message: "Unproccesable request, please provide the required fields",
       });
@@ -40,15 +38,15 @@ export const createMessage = async (req, res) => {
         // Replace this with the API that will save the data received
         // to your backend
         // Return 200 if everything is successful
-        const message = new Message({
+        const mymessage = new Message({
           title: title,
           email: email,
           message: message,
         });
-        await message.save();
+        await mymessage.save();
         return res.status(201).send({
           message: "Message created successfully.",
-          createMessage: message,
+          createMessage: mymessage,
         });
       }
 
