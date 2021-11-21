@@ -2,7 +2,7 @@ import Admin from "../models/adminModel.js";
 
 export const getAdmins = async (_, res) => {
   try {
-    const admins = await Admin.findOne({});
+    const admins = await Admin.find({});
     res.json(admins);
   } catch (err) {
     console.log("Error getting admins.", err);
