@@ -59,5 +59,5 @@ export const createMessage = async (req, res) => {
       console.log("Error creating message.", err);
     }
   }
-  return res.status(404).send("Not found");
+  return res.status(404).send("Not found the thing.");
 };

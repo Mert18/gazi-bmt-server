@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.route("/").get(getMessages);
 
-router.route("/create").post(createMessage);
+router.route("/").post(createMessage);
 
 export default router;
