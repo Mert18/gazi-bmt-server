@@ -10,25 +10,20 @@ export const getMessages = async (_, res) => {
 };
 
 export const createMessage = async (req, res) => {
-  const { body, method } = req;
+  const { title, email, message } = req.body;
 
-  const { title, email, message } = body;
-
-  if (method === "POST") {
-    try {
-      const mymessage = new Message({
-        title: title,
-        email: email,
-        message: message,
-      });
-      await mymessage.save();
-      return res.status(201).send({
-        message: "Message created successfully.",
-        createMessage: mymessage,
-      });
-    } catch (err) {
-      console.log("Error creating message.", err);
-    }
+  try {
+    const mymessage = new Message({
+      title: title,
+      email: email,
+      message: message,
+    });
+    await mymessage.save();
+    return res.status(201).send({
+      message: "Message created successfully.",
+      createMessage: mymessage,
+    });
+  } catch (err) {
+    console.log("Error creating message.", err);
   }
-  return res.status(404).send("Not found the thing.");
 };
