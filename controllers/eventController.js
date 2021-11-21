@@ -2,7 +2,7 @@ import Event from "../models/eventModel.js";
 
 export const getEvents = async (_, res) => {
   try {
-    const events = await Event.find({});
+    const events = await Event.findOne({});
     res.json(events);
   } catch (err) {
     console.log("Error getting events.", err);

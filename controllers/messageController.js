@@ -2,7 +2,7 @@ import Message from "../models/messageModel.js";
 
 export const getMessages = async (_, res) => {
   try {
-    const messages = await Message.find({});
+    const messages = await Message.findOne({});
     res.json(messages);
   } catch (err) {
     console.log("Error getting messages.", err);
