@@ -27,15 +27,20 @@ export const createMessage = async (req, res) => {
 
 export const updateMessage = async (req, res) => {
   try {
-    const mess = await Message.updateOne(
-      { _id: req.params.id },
-      {
-        $set: {
-          answered: true,
-        },
-      }
-    );
-    res.json(mess);
+    const message = await Message.findById(req.params._id);
+    if (message) {
+      message.answered = true;
+
+      const updatedMessage = await message.save();
+
+      res.json({
+        _id: updatedMessage._id,
+        title: updatedMessage.name,
+        email: updatedMessage.email,
+        message: updatedMessage.message,
+        answered: updatedMessage.answered,
+      });
+    }
   } catch (err) {
     return res.status(422).json({ message: "Something went wrong." });
   }
