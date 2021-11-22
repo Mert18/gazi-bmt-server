@@ -26,8 +26,9 @@ export const createMessage = async (req, res) => {
 };
 
 export const updateMessage = async (req, res) => {
+  const { id } = req.body;
   try {
-    const message = await Message.findById(req.params._id);
+    const message = await Message.findById(id);
     if (message) {
       message.answered = true;
 

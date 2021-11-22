@@ -12,6 +12,6 @@ router.route("/").get(getMessages);
 
 router.route("/create").post(createMessage);
 
-router.route("/update/:id").get(updateMessage);
+router.route("/update").post(updateMessage);
 
 export default router;
