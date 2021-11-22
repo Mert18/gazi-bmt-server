@@ -21,7 +21,19 @@ export const createMessage = async (req, res) => {
     await mymessage.save();
     return res.status(200).send("OK");
   } catch (err) {
-    console.log(error);
     return res.status(422).json({ message: "Something went wrong" });
+  }
+};
+
+export const updateMessage = async (req, res) => {
+  const { id } = req.body;
+
+  try {
+    const mess = await Message.findOneAndUpdate(id, {
+      $set: { answered: true },
+    });
+    res.json(mess);
+  } catch (err) {
+    return res.status(422).json({ message: "Something went wrong." });
   }
 };
