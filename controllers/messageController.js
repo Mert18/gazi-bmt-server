@@ -26,10 +26,8 @@ export const createMessage = async (req, res) => {
 };
 
 export const updateMessage = async (req, res) => {
-  const { id } = req.body;
-
   try {
-    const mess = await Message.findOneAndUpdate(id, {
+    const mess = await Message.findOneAndUpdate(req.params.id, {
       $set: { answered: true },
     });
     res.json(mess);
